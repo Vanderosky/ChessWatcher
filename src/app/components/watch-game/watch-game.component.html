@@ -1,0 +1,11 @@
+<div class="padding">
+    <div class="center">
+        <h1 *ngIf="this.connectionState === 0"><mat-spinner></mat-spinner></h1>
+        <h1 *ngIf="this.connectionState === 1">Watching game: {{this.id}}</h1>
+        <h1 *ngIf="this.connectionState === 2">There was an error in game: {{this.id}}</h1>
+    </div>
+    <div class="center" *ngIf="this.connectionState === 1">
+        <app-show-board [chessBoardState]="chessBoardState" ></app-show-board>
+        <app-score-sheet></app-score-sheet>
+    </div>
+</div>

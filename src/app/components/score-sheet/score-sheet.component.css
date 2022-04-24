@@ -1,0 +1,29 @@
+.demo-table {
+    width: 500px;
+    margin-left: 128px;
+    margin-right: 8px;
+    margin-top: 34px;
+  }
+  
+  .mat-column-demo-position {
+    width: 4px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+  }
+  
+  .mat-column-demo-name {
+    padding-left: 16px;
+    font-size: 20px;
+  }
+  
+  .mat-column-pieces-white{
+    font-style: italic;
+  }
+  
+  .mat-column-pieces-black {
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
