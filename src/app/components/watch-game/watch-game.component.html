@@ -4,8 +4,17 @@
         <h1 *ngIf="this.connectionState === 1">Watching game: {{this.id}}</h1>
         <h1 *ngIf="this.connectionState === 2">There was an error in game: {{this.id}}</h1>
     </div>
-    <div class="center" *ngIf="this.connectionState === 1">
-        <app-show-board [chessBoardState]="chessBoardState" ></app-show-board>
+    <div class="flex-container" *ngIf="this.connectionState === 1">
+        <div class="flex-child">
+            <app-show-board [currentBoard]="curerntBoard" ></app-show-board>
+            <div class="state-menu">
+                <button class="state-button" mat-raised-button color="primary" (click)="skipBackward()"> Skip Back</button>
+                <button class="state-button" mat-raised-button color="primary" (click)="moveBackward()">Move Back</button>
+                <button class="state-button" mat-raised-button color="primary" (click)="moveForward()">Move Forward</button>
+                <button class="state-button" mat-raised-button color="primary" (click)="skipForward()">Skip Forward</button>
+
+            </div>
+        </div>
         <app-score-sheet></app-score-sheet>
     </div>
 </div>

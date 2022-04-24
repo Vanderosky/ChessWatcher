@@ -24,14 +24,15 @@ export class ChessState {
         return this.gameBoards[this.moveCounter];
     }
 
-    moveBackwards(): void {
+    moveBackward(): void {
         if (this.moveCounter > 0) { this.moveCounter--; }
     }
+
     moveForward(): void {
         if (this.moveCounter < this.movesHistory.length) { this.moveCounter++; }
     }
 
-    skipBackwards(): void {
+    skipBackward(): void {
         this.moveCounter = 0;
     }
 

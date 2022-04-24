@@ -15,7 +15,7 @@ export class ConnectionService {
     this.webSocket = webSocket('wss://sleepy-falls-41701.herokuapp.com/watch?id=' + this.gameId);
   }
 
-  listenData(gameId: string): Observable<Move> {
+  listenData(gameId: string): WebSocketSubject<Move> {
     return webSocket('wss://sleepy-falls-41701.herokuapp.com/watch?id=' + gameId);
   }
 

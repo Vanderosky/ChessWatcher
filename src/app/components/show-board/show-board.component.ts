@@ -7,20 +7,12 @@ import { Piece } from 'src/app/services/objects/piece';
   templateUrl: './show-board.component.html',
   styleUrls: ['./show-board.component.css'],
 })
-export class ShowBoardComponent implements OnInit, OnChanges {
-  @Input() chessBoardState: ChessState = new ChessState();
-
-  public currentBoard: Piece[] = [];
+export class ShowBoardComponent implements OnInit {
+  @Input() currentBoard: Piece[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.currentBoard = this.chessBoardState.getCurrentBoard();
-  }
-
-  ngOnChanges(): void {
-    this.currentBoard = this.chessBoardState.getCurrentBoard();
-}
+  ngOnInit(): void {}
 
   public getPiece(piece: Piece): string {
     if (piece.color) {

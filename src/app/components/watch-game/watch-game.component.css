@@ -7,3 +7,21 @@
 .padding {
     padding-left: 16px;
 }
+
+.flex-container {
+    display: flex;
+  }
+
+.flex-child {
+    flex: 1;
+  }
+
+.state-menu {
+    margin-left: 5em;
+    margin-top: 2em;
+}
+
+.state-button {
+    margin-top: 1em;
+    margin-inline: 5px;
+}
