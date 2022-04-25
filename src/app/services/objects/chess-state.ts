@@ -7,7 +7,8 @@ export class ChessState {
   private gameBoards: Piece[][] = [];
   private moveCounter = 0;
   private movesHistory: Move[] = [];
-
+  private movesInNotation: string[] = [];
+  private movesInNotationCount = 0;
     constructor() {
         this.gameBoards.push(this.getNewBoard());
     }
@@ -22,6 +23,18 @@ export class ChessState {
 
     getCurrentBoard(): Piece[] {
         return this.gameBoards[this.moveCounter];
+    }
+
+    getMovesHistory(): Move[] {
+        return this.movesHistory;
+    }
+
+    getMovesInNotation(): string[] {
+        return this.movesInNotation;
+    }
+
+    getMovesInNotationCount(): number {
+        return this.movesInNotationCount;
     }
 
     moveBackward(): void {
@@ -42,6 +55,7 @@ export class ChessState {
 
     addMove(move: Move): void {
         this.movesHistory.push(move);
+        this.updateMovesInNotation();
         const newBoard: Piece[] = [...this.gameBoards[this.moveCounter]];
 
         newBoard[move.to] = newBoard[move.from];
@@ -118,4 +132,83 @@ export class ChessState {
 
         return chessBoard;
     }
+
+    updateMovesInNotation(): void {
+        if (this.movesInNotationCount > 0) {
+          if (
+            this.movesHistory[this.movesInNotationCount - 1].color ===
+            this.movesHistory[this.movesInNotationCount].color
+          ) {
+            this.movesInNotation.splice(this.movesInNotation.length - 1, 1);
+            this.movesInNotation.push(
+              this.getMoveInNotation(this.movesHistory[this.movesInNotationCount], true)
+            );
+          } else {
+            this.movesInNotation.push(
+              this.getMoveInNotation(this.movesHistory[this.movesInNotationCount])
+            );
+          }
+        } else {
+          this.movesInNotation.push(
+            this.getMoveInNotation(this.movesHistory[this.movesInNotationCount])
+          );
+        }
+      }
+
+    getMoveInNotation(move: Move, castle: boolean = false): string {
+        let fieldName = '';
+        if (castle) {
+          fieldName += String.fromCharCode((move.to % 8) + 97);
+          fieldName += (8 - move.to / 8).toString();
+          if (castle) {
+            if (move.color) {
+              if (move.to < 4) {
+                fieldName += ' O-O-O'; // kingside castle
+                return fieldName;
+              } else {
+                fieldName += ' O-O'; // kingside castle
+                return fieldName;
+              }
+            } else {
+              if (move.to > 60) {
+                fieldName += ' O-O'; // kingside castle
+                return fieldName;
+              } else {
+                fieldName += ' O-O-O'; // kingside castle
+                return fieldName;
+              }
+            }
+          }
+        }
+        fieldName += this.getPieceName(move.pieceId);
+        if (this.getCurrentBoard()[move.to].id !== 0) {
+          // check if capture
+          fieldName += String.fromCharCode((move.from % 8) + 97);
+          fieldName += 'x';
+        }
+        fieldName += String.fromCharCode((move.to % 8) + 97);
+        fieldName += (8 - move.to / 8).toString();
+        fieldName += ' ';
+        return fieldName;
+      }
+
+      public getPieceName(pieceId: number): string {
+        switch (pieceId) {
+          case 0:
+            return '';
+          case 1:
+            return ''; // pawn
+          case 2:
+            return 'R'; // rook
+          case 3:
+            return 'N'; // knight
+          case 4:
+            return 'B'; // bishop
+          case 5:
+            return 'Q'; // queen
+          case 6:
+            return 'K'; // king
+        }
+        return '';
+      }
 }

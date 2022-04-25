@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebSocketSubject } from 'rxjs/webSocket';
@@ -10,7 +11,7 @@ import { Piece } from 'src/app/services/objects/piece';
 @Component({
   selector: 'app-watch-game',
   templateUrl: './watch-game.component.html',
-  styleUrls: ['./watch-game.component.css']
+  styleUrls: ['./watch-game.component.css'],
 })
 export class WatchGameComponent implements OnInit {
   public id = '';
@@ -22,7 +23,7 @@ export class WatchGameComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private connectionService: ConnectionService,
+    private connectionService: ConnectionService
   ) {
     this.getRouteParameter();
     this.connection = this.connectionService.listenData(this.id);
@@ -43,6 +44,7 @@ export class WatchGameComponent implements OnInit {
     this.connection.subscribe({
       next: (move) => {
         this.chessBoardState.addMove(move);
+        console.log(this.chessBoardState.getMovesInNotation());
         this.updateCurrentBoard();
         this.connectionState = ConnectionState.connected;
       },
@@ -54,7 +56,7 @@ export class WatchGameComponent implements OnInit {
 
   async keepConnectionAlive(): Promise<void> {
     while (this.connectionState !== ConnectionState.failed) {
-      const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+      const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
       await delay(5000);
       this.connection.next({
         pieceId: 1,
