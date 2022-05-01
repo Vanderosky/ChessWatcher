@@ -12,11 +12,11 @@ export class ConnectionService {
 
   constructor() {
     this.gameId = 'a';
-    this.webSocket = webSocket('wss://sleepy-falls-41701.herokuapp.com/watch?id=' + this.gameId);
+    this.webSocket = webSocket('wss://chess-watcher.herokuapp.com/watch?id=' + this.gameId);
   }
 
   listenData(gameId: string): WebSocketSubject<Move> {
-    return webSocket('wss://sleepy-falls-41701.herokuapp.com/watch?id=' + gameId);
+    return webSocket('wss://chess-watcher.herokuapp.com/watch?id=' + gameId);
   }
 
 }

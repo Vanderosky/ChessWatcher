@@ -1,8 +1,5 @@
 .demo-table {
-    width: 500px;
-    margin-left: 128px;
-    margin-right: 8px;
-    margin-top: 34px;
+    width: 400px;
   }
   
   .mat-column-demo-position {
@@ -18,12 +15,10 @@
   }
   
   .mat-column-pieces-white{
-    font-style: italic;
+    text-align: center;
   }
   
   .mat-column-pieces-black {
-    width: 32px;
     text-align: center;
-    font-weight: bold;
   }
   

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebSocketSubject } from 'rxjs/webSocket';
 import { ConnectionService } from 'src/app/services/connection/connection.service';
+import { GameIdService } from 'src/app/services/game-id/game-id.service';
 import { ChessState } from 'src/app/services/objects/chess-state';
 import { ConnectionState } from 'src/app/services/objects/connection-state';
 import { Move } from 'src/app/services/objects/Move';
@@ -18,12 +19,15 @@ export class WatchGameComponent implements OnInit {
   public chessBoardState: ChessState = new ChessState();
   public connectionState: ConnectionState = ConnectionState.connecting;
   public curerntBoard: Piece[] = [];
+  public movesInNotation: string[] = [];
+  public latestUpdate: Date = new Date();
 
   private connection: WebSocketSubject<Move>;
 
   constructor(
     private route: ActivatedRoute,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private gameIdService: GameIdService,
   ) {
     this.getRouteParameter();
     this.connection = this.connectionService.listenData(this.id);
@@ -37,16 +41,14 @@ export class WatchGameComponent implements OnInit {
 
   getRouteParameter(): void {
     const idParameter = this.route.snapshot.params.id;
-    this.id = idParameter ? idParameter : '';
+    this.id = idParameter;
+    this.gameIdService.setGameId(this.id);
   }
 
   subscribeToData(): void {
     this.connection.subscribe({
-      next: (move) => {
-        this.chessBoardState.addMove(move);
-        console.log(this.chessBoardState.getMovesInNotation());
-        this.updateCurrentBoard();
-        this.connectionState = ConnectionState.connected;
+      next: (move: Move) => {
+        this.update(move);
       },
       error: () => {
         this.connectionState = ConnectionState.failed;
@@ -54,12 +56,19 @@ export class WatchGameComponent implements OnInit {
     });
   }
 
+  update(move: Move): void {
+    this.chessBoardState.addMove(move);
+    this.updateCurrentBoard();
+    this.connectionState = ConnectionState.connected;
+    this.latestUpdate = new Date();
+  }
+
   async keepConnectionAlive(): Promise<void> {
     while (this.connectionState !== ConnectionState.failed) {
       const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
       await delay(5000);
       this.connection.next({
-        pieceId: 1,
+        piece: 1,
         from: 1,
         to: 1,
         color: false,
@@ -68,7 +77,8 @@ export class WatchGameComponent implements OnInit {
   }
 
   updateCurrentBoard(): void {
-    this.curerntBoard = this.chessBoardState.getCurrentBoard();
+    this.curerntBoard = [...this.chessBoardState.getCurrentBoard()];
+    this.movesInNotation = [...this.chessBoardState.getMovesInNotation()];
   }
 
   skipBackward(): void {

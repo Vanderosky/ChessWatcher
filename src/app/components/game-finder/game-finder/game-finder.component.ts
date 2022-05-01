@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GameIdService } from 'src/app/services/game-id/game-id.service';
 
 @Component({
   selector: 'app-game-finder',
@@ -8,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./game-finder.component.css'],
 })
 export class GameFinderComponent implements OnInit {
+  @HostBinding('className') componentClass: string;
+
   form: FormGroup;
   public loginInvalid = false;
   private formSubmitAttempt = false;
@@ -17,8 +20,10 @@ export class GameFinderComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private gameIdService: GameIdService,
   ) {
+    this.componentClass = 'center';
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/game';
 
     this.form = this.fb.group({
@@ -41,8 +46,9 @@ export class GameFinderComponent implements OnInit {
       this.formSubmitAttempt = true;
       return;
     }
-    
-    this.router.navigateByUrl("/watch/" + this.form.get('game')?.value);
+    const gameId = this.form.get('game')?.value;
+    this.gameIdService.setGameId(gameId);
+    this.router.navigateByUrl("/watch/" + gameId);
   }
 
   getRouteParameter(): void {

@@ -7,14 +7,23 @@
     <div class="flex-container" *ngIf="this.connectionState === 1">
         <div class="flex-child">
             <app-show-board [currentBoard]="curerntBoard" ></app-show-board>
-            <div class="state-menu">
+            <div class="state-menu center">
                 <button class="state-button" mat-raised-button color="primary" (click)="skipBackward()"> Skip Back</button>
                 <button class="state-button" mat-raised-button color="primary" (click)="moveBackward()">Move Back</button>
                 <button class="state-button" mat-raised-button color="primary" (click)="moveForward()">Move Forward</button>
                 <button class="state-button" mat-raised-button color="primary" (click)="skipForward()">Skip Forward</button>
-
+            </div>
+            <div class="center">
+                Last update at: {{this.latestUpdate | date:'mediumTime'}}
             </div>
         </div>
-        <app-score-sheet></app-score-sheet>
+        <div class="left-column">
+            <div class="center">
+                <app-score-sheet [movesInNotation]="movesInNotation"></app-score-sheet>
+            </div>
+            <div class="center">
+                <app-download-button [movesInNotation]="movesInNotation"></app-download-button>
+            </div>
+        </div>
     </div>
 </div>

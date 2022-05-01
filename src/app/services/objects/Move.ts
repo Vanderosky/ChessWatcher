@@ -1,5 +1,5 @@
 export interface Move {
-    pieceId: number;
+    piece: number;
     from: number;
     to: number;
     color: boolean;
