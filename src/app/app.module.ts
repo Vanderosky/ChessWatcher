@@ -20,14 +20,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WatchGameComponent } from './components/watch-game/watch-game.component';
 import { GameFinderComponent } from './components/game-finder/game-finder/game-finder.component';
 import { ShowBoardComponent } from './components/show-board/show-board.component';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { LayoutComponent } from './components/layout/layout.component';
 import { ScoreSheetComponent } from './components/score-sheet/score-sheet.component';
 import { DownloadButtonComponent } from './components/download-button/download-button.component';
 import { ViewAiComponent } from './components/view-ai/view-ai.component';
 import { HttpClientModule } from '@angular/common/http';
-
-const config: SocketIoConfig = { url: 'wss://sleepy-falls-41701.herokuapp.com/watch?id=', options: {} };
 
 @NgModule({
   declarations: [
@@ -60,7 +57,6 @@ const config: SocketIoConfig = { url: 'wss://sleepy-falls-41701.herokuapp.com/wa
     MatOptionModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
