@@ -14,3 +14,8 @@ mat-form-field {
   justify-content: center;
   align-items: center;
 }
+
+:host {
+  position: relative;
+  left: 30%;
+}
