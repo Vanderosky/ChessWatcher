@@ -31,5 +31,4 @@ export class LayoutComponent implements OnInit {
       this.router.navigateByUrl('/ai/' + this.gameId);
     }
   }
-
 }

@@ -1,3 +1,110 @@
-<div>
-    <app-show-board [currentBoard]="chessState.getCurrentBoard()"></app-show-board>
-</div>
+<!-- <div>
+    <app-show-board [aiData]="chessState.getaiData()"></app-show-board>
+</div> -->
+<div class="flex-child center" *ngIf="aiData.length === 64">
+    <table class="chess-board">
+      <tbody>
+        <tr>
+          <th></th>
+          <th>a</th>
+          <th>b</th>
+          <th>c</th>
+          <th>d</th>
+          <th>e</th>
+          <th>f</th>
+          <th>g</th>
+          <th>h</th>
+        </tr>
+        <tr>
+          <th>8</th>
+          <td class="light">{{ getPiece(this.aiData[0]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[1]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[2]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[3]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[4]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[5]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[6]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[7]) }}</td>
+        </tr>
+        <tr>
+          <th>7</th>
+          <td class="dark">{{ getPiece(this.aiData[8]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[9]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[10]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[11]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[12]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[13]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[14]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[15]) }}</td>
+        </tr>
+        <tr>
+          <th>6</th>
+          <td class="light">{{ getPiece(this.aiData[16]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[17]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[18]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[19]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[20]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[21]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[22]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[23]) }}</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td class="dark">{{ getPiece(this.aiData[24]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[25]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[26]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[27]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[28]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[29]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[30]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[31]) }}</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td class="light">{{ getPiece(this.aiData[32]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[33]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[34]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[35]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[36]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[37]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[38]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[39]) }}</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td class="dark">{{ getPiece(this.aiData[40]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[41]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[42]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[43]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[44]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[45]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[46]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[47]) }}</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td class="light">{{ getPiece(this.aiData[48]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[49]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[50]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[51]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[52]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[53]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[54]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[55]) }}</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td class="dark">{{ getPiece(this.aiData[56]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[57]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[58]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[59]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[60]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[61]) }}</td>
+          <td class="dark">{{ getPiece(this.aiData[62]) }}</td>
+          <td class="light">{{ getPiece(this.aiData[63]) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button mat-raised-button color="primary" >Download PGN</button>
+  </div>
+  

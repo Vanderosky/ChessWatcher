@@ -7,16 +7,9 @@ import { Move } from '../objects/Move';
   providedIn: 'root'
 })
 export class ConnectionService {
-  private gameId: string;
-  private webSocket: WebSocketSubject<any>;
-
-  constructor() {
-    this.gameId = 'a';
-    this.webSocket = webSocket('wss://chess-watcher.herokuapp.com/watch?id=' + this.gameId);
-  }
+  constructor() { }
 
   listenData(gameId: string): WebSocketSubject<Move> {
     return webSocket('wss://chess-watcher.herokuapp.com/watch?id=' + gameId);
   }
-
 }

@@ -45,40 +45,40 @@ export class ViewAiComponent implements OnInit {
         console.log(error);
       },
       complete: () => {}
-    })
+    });
   }
 
-  GetPiece(piece: PieceAI): string
+  getPiece(piece: PieceAI): string
   {
       switch (piece.piece)
       {
-          case "Black-Pawn":
-              return "♟";
-          case "Black-Rook":
-              return "♜";
-          case "Black-Knight":
-              return "♞";
-          case "Black-Bishop":
-              return "♝";
-          case "Black-Queen":
-              return "♛";
-          case "Black-King":
-              return "♚";
+          case 'Black-Pawn':
+              return '♟';
+          case 'Black-Rook':
+              return '♜';
+          case 'Black-Knight':
+              return '♞';
+          case 'Black-Bishop':
+              return '♝';
+          case 'Black-Queen':
+              return '♛';
+          case 'Black-King':
+              return '♚';
 
-          case "White-Pawn":
-              return "♙";
-          case "White-Rook":
-              return "♖";
-          case "White-Knight":
-              return "♘";
-          case "White-Bishop":
-              return "♗";
-          case "White-Queen":
-              return "♕";
-          case "White-King":
-              return "♔";
+          case 'White-Pawn':
+              return '♙';
+          case 'White-Rook':
+              return '♖';
+          case 'White-Knight':
+              return '♘';
+          case 'White-Bishop':
+              return '♗';
+          case 'White-Queen':
+              return '♕';
+          case 'White-King':
+              return '♔';
           default:
-              return "";
+              return '';
       }
   }
 

@@ -48,5 +48,5 @@ export class ShowBoardComponent implements OnInit {
           default:
               return '';
       }
-    }
+  }
 }

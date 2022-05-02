@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'ai/:id', component: ViewAiComponent},
   { path: 'find', component: GameFinderComponent},
   { path: '', component: GameFinderComponent},
+  { path: '**', component: GameFinderComponent},
 ];
 
 @NgModule({

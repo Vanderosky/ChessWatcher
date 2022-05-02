@@ -48,7 +48,7 @@ export class GameFinderComponent implements OnInit {
     }
     const gameId = this.form.get('game')?.value;
     this.gameIdService.setGameId(gameId);
-    this.router.navigateByUrl("/watch/" + gameId);
+    this.router.navigateByUrl('/watch/' + gameId);
   }
 
   getRouteParameter(): void {
