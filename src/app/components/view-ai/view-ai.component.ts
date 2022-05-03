@@ -30,8 +30,10 @@ export class ViewAiComponent implements OnInit {
 
   getRouteParameter(): void {
     const idParameter = this.route.snapshot.params.id;
-    this.gameId = idParameter ? idParameter : '';
-    this.gameIdService.setGameId(this.gameId);
+    if (idParameter !== '') {
+      this.gameId = idParameter;
+      this.gameIdService.setGameId(this.gameId);
+    }
   }
 
   getAiData(): void{
