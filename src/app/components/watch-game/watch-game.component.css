@@ -31,3 +31,13 @@
     display: flex;
     justify-content: center;
 }
+
+.margin-auto-vertically {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+:host {
+    margin-left: auto;
+    margin-right: auto;
+}

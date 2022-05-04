@@ -14,11 +14,11 @@ export class AiDataService {
 
   fetchReposByUserName(gameId: string): Observable<PieceAI[]> {
     return this.http
-      .get<PieceAI[]>(this.apiUrl + gameId)
+      .get<PieceAI[]>('/assets/ai-dummy.json')
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(error);
         })
-      );
+    );
   }
 }

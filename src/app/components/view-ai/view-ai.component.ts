@@ -44,10 +44,12 @@ export class ViewAiComponent implements OnInit {
       },
       error: (error) => {
         this.error = error;
-        console.log(error);
       },
-      complete: () => {}
     });
+  }
+
+  getUpdate(): void {
+    this.getAiData();
   }
 
   getPiece(piece: PieceAI): string

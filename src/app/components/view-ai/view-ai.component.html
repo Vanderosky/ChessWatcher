@@ -1,7 +1,8 @@
 <!-- <div>
     <app-show-board [aiData]="chessState.getaiData()"></app-show-board>
 </div> -->
-<div class="flex-child center" *ngIf="aiData.length === 64">
+<div class="flex-container" *ngIf="aiData.length === 64">
+  <div>
     <table class="chess-board">
       <tbody>
         <tr>
@@ -105,6 +106,11 @@
         </tr>
       </tbody>
     </table>
-    <button mat-raised-button color="primary" >Download PGN</button>
+  
+    <div class="center update-button">
+      <button mat-raised-button color="primary" (click)="getUpdate()">Get Update</button>
+    </div>
   </div>
+</div>
+
   

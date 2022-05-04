@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://chess-watcher.herokuapp.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "/api": ""
+      }
+    }
+  }

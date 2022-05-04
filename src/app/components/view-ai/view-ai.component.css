@@ -1,0 +1,86 @@
+.chess-board {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.chess-board th {
+    padding: .5em;
+}
+
+.chess-board th+th {
+    border-bottom: 1px solid #000;
+}
+
+.chess-board th:first-child,
+.chess-board td:last-child {
+    border-right: 1px solid #000;
+}
+
+.chess-board tr:last-child td {
+    border-bottom: 1px solid;
+}
+
+.chess-board th:empty {
+    border: none;
+}
+
+.chess-board td {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    font-size: 3em;
+    line-height: 0;
+}
+
+.chess-board .light {
+    background: #eee;
+}
+
+.chess-board .dark {
+    background: #aaa;
+}
+
+.btn {
+    margin-top: 1em;
+    margin-inline: 5px;
+}
+
+.stateMenu {
+    margin-left: 5em;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+} 
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+mat-grid-tile {
+    background: lightblue;
+  }
+
+.flex-container {
+    display: flex;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.update-button {
+    margin-top: 1em;
+}
+
+:host {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+  }
