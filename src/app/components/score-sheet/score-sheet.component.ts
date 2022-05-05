@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   styleUrls: ['./score-sheet.component.css']
 })
 export class ScoreSheetComponent implements OnInit, OnChanges {
-  @Input() movesInNotation: any = [];
+  @Input() movesInNotation: string[] = [];
 
   public tableData: rowInTable[] = [];
 
