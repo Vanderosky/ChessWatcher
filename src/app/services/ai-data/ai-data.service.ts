@@ -14,7 +14,7 @@ export class AiDataService {
 
   fetchReposByUserName(gameId: string): Observable<PieceAI[]> {
     return this.http
-      .get<PieceAI[]>('/assets/ai-dummy.json')
+      .get<PieceAI[]>(this.apiUrl + gameId)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(error);

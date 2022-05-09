@@ -1,6 +1,8 @@
-<!-- <div>
-    <app-show-board [aiData]="chessState.getaiData()"></app-show-board>
-</div> -->
+<div class="center">
+  <h1 *ngIf="this.connectionState === 0"><mat-spinner></mat-spinner></h1>
+  <h1 *ngIf="this.connectionState === 1">AI snapshot of game: {{this.gameId}}</h1>
+  <h1 *ngIf="this.connectionState === 2">There was an error in game: {{this.gameId}}</h1>
+</div>
 <div class="flex-container" *ngIf="aiData.length === 64">
   <div>
     <table class="chess-board">
